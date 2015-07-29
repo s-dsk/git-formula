@@ -7,13 +7,24 @@
 
 get-git:
   pkg.installed:
-      - names:
-        - libcurl4-openssl-dev 
-        - libexpat1-dev 
-        - gettext 
-        - libz-dev 
-        - libssl-dev
-        - build-essential
+    - names:
+    {% if grains['os_family'] == 'Debian' %}
+      - libcurl4-openssl-dev
+      - libexpat1-dev
+      - gettext
+      - libz-dev
+      - libssl-dev
+      - build-essential
+    {% elif grains['os_family'] == 'RedHat' %}
+      - gcc
+      - make
+      - libcurl-devel
+      - expat-devel
+      - gettext-devel
+      - openssl-devel
+      - zlib-devel
+      - perl-ExtUtils-MakeMaker
+    {% endif %}
   file.managed:
     - name: {{ git_package }}
     - source: https://git-core.googlecode.com/files/git-{{ version }}.tar.gz
