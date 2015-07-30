@@ -8,6 +8,9 @@ get-gitrepo:
     - names:
     {% if grains['os_family'] == 'Debian' %}
       - git
+      - gcc
+      - make
+      - autoconf
       - libcurl4-openssl-dev
       - libexpat1-dev
       - gettext
@@ -18,6 +21,7 @@ get-gitrepo:
       - git
       - gcc
       - make
+      - autoconf
       - libcurl-devel
       - expat-devel
       - gettext-devel
