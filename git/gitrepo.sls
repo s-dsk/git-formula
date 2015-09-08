@@ -14,7 +14,7 @@ get-gitrepo:
       - libcurl4-openssl-dev
       - libexpat1-dev
       - gettext
-      - libz-dev
+      - zlib1g-dev
       - libssl-dev
       - build-essential
     {% elif grains['os_family'] == 'RedHat' %}
